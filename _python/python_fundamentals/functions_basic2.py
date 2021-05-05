@@ -21,12 +21,15 @@ first_plus_length([1,2,3,4,5,6])
 def values_greater_than_second(list):
     newList = []
     counter = 0
-    for i in range(len(list)):
-        if list[1] < list[i]:
-            newList.append(list[i])
-            counter = counter + 1
-    print(counter)
-    return newList
+    if len(list) <= 2:
+        return False
+    else:
+        for i in range(len(list)):
+            if list[1] < list[i]:
+                newList.append(list[i])
+                counter = counter + 1
+        print(counter)
+        return newList
 
 
 print(values_greater_than_second([1, 2, 3, 4, 5, 6]))
