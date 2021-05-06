@@ -21,6 +21,9 @@ class User:
         other_user.account_balance += amount
 
 
+
+
+
 omar = User("Omar", "Omardakka42@gmail.com")
 haitham = User("Haitham", "Haitham@gmail.com")
 ahmad = User("Ahmad", "Ahmad@gmail.com")
