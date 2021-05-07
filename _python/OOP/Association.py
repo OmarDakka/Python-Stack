@@ -4,9 +4,9 @@ class User:
         self.email = email
         self.account = BankAccount (int_rate = 0.2, balance = 0)
 
-    def make_deposit(self,amount):
-        self.account.deposit += amount
-        return self
+    def make_deposit(self):
+        self.account.deposit()
+        print(self.account.balance)
 
     def make_withdrawal(self, amount):
         self.account_balance -= amount
