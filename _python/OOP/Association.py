@@ -1,26 +1,28 @@
 class User:
+
     def __init__(self, name, email):
         self.name = name
         self.email = email
-        self.account = BankAccount (int_rate = 0.2, balance = 0)
+        self.account = BankAccount(int_rate = 0.2, balance = 0)
 
-    def make_deposit(self):
-        self.account.deposit()
-        print(self.account.balance)
+    def make_deposit(self,amount):
+        self.account.deposit(amount)
+        return self
 
     def make_withdrawal(self, amount):
-        self.account_balance -= amount
+        self.account.withdraw(amount)
         return self
 
     def display_user_balance(self):
-        print("User: {}, Balance: {}".format(self.name, self.account_balance))
+        print("User: {}, Balance: {}".format(self.name, self.account.balance))
         return self
 
     def transfer_money(self, other_user, amount):
-        self.account_balance -= amount
-        other_user.account_balance += amount
+        self.account.balance -= amount
+        other_user.account.balance += amount
 
 class BankAccount:
+
     def __init__(self, int_rate, balance=0):
         self.int_rate = int_rate
         self.balance = balance
@@ -51,12 +53,11 @@ ahmad = User("Ahmad", "Ahmad@gmail.com")
 # omar.account.deposit(100).account.deposit(500).account.deposit(400).account.withdraw(500).account.yield_interest().account.display_account_info()
 # ibraheem.deposit(600).deposit(300).withdraw(100).withdraw(50).withdraw(200).withdraw(100).yield_interest().display_account_info()
 
-
-omar.make_deposit(150).make_deposit(50).make_deposit(
+# omar.make_deposit(100)
+omar.make_deposit(150).make_deposit(50).make_deposit(300).make_withdrawal(200).make_deposit(200).display_user_balance()
+haitham.make_deposit(500).make_deposit(1000).make_withdrawal(
     300).make_withdrawal(200).display_user_balance()
-# haitham.make_deposit(500).make_deposit(1000).make_withdrawal(
-#     300).make_withdrawal(200).display_user_balance()
-# ahmad.make_deposit(700).make_withdrawal(500).make_withdrawal(
-#     300).make_withdrawal(200).display_user_balance()
-# omar.transfer_money(ahmad, 300)
-# ahmad.display_user_balance()
+ahmad.make_deposit(700).make_withdrawal(500).make_withdrawal(
+    300).make_withdrawal(200).display_user_balance()
+omar.transfer_money(ahmad, 300)
+ahmad.display_user_balance()
