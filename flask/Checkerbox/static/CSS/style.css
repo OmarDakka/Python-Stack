@@ -1,0 +1,15 @@
+.color0 {
+    background-color: red;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin: -5px;
+}
+
+.color1 {
+    background-color: blue;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin: -5px;
+}
