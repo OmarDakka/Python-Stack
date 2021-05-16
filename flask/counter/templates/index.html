@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        h1 {
+            height: 200px;
+            width: 400px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+        }
+        
+        h3 {
+            height: 200px;
+            width: 400px;
+            position: fixed;
+            top: 57%;
+            left: 52%;
+            margin-top: -80px;
+            margin-left: -100px;
+        }
+        
+        .position {
+            height: 50px;
+            width: 100px;
+            position: fixed;
+            top: 65%;
+            left: 56%;
+            margin-top: -80px;
+            margin-left: -100px;
+        }
+        
+        .position2 {
+            height: 50px;
+            width: 100px;
+            position: fixed;
+            top: 65%;
+            left: 47%;
+            margin-top: -80px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Counter</h1>
+    <h3>{{visit}} times</h3>
+    <form action="/add_two">
+        <input type="submit" class="position" name="" value="+2 visits">
+    </form>
+    <form action="/destroy_session">
+        <input type="submit" class="position2" name="" value="RESET">
+    </form>
+</body>
+
+</html>
