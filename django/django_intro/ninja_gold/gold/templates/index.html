@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let it Rain</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+        header {
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+        }
+        
+        .money {
+            border: 2px solid gray;
+            width: 150px;
+            margin-left: 25px;
+        }
+        
+        .huge {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .well {
+            border: 2px solid gray;
+            height: 300px;
+            padding-top: 23%;
+            margin: 15px;
+        }
+        /* .btn btn-success pull-right {
+            box-shadow: 5px 10px #888888;
+        } */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h3>Your Gold: </h3>
+        <h3 class="money">{{request.session.total_gold}}</h3>
+    </header>
+    <div class="huge">
+        <div class="col-md-3">
+            <div class="well">
+                <h2>Farm</h2>
+                <h5 class="text-default">
+                    (earns 10-20 GOLD)
+                </h5>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="farm">
+                    <input type="submit" class="btn btn-success shadow-lg p-3 pull-right" value="Find Gold!">
+            </div>
+        </div>
+        </form>
+        <div class="col-md-3">
+            <div class="well">
+                <h2>Cave</h2>
+                <h5 class="text-default">
+                    (earns 5-10 GOLD)
+                </h5>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="cave">
+                    <input type="submit" class="btn btn-success shadow-lg p-3 pull-right" value="Find Gold!">
+            </div>
+        </div>
+        </form>
+        <div class="col-md-3">
+            <div class="well">
+                <h2>House</h2>
+                <h5 class="text-default">
+                    (earns 2-5 GOLD)
+                </h5>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="house">
+                    <input type="submit" class="btn btn-success shadow-lg p-3 pull-right" value="Find Gold!">
+            </div>
+        </div>
+        </form>
+        <div class="col-md-3">
+            <div class="well">
+                <h2>Casino</h2>
+                <h5 class="text-default">
+                    (earns/takes 0-50 GOLDS)
+                </h5>
+                <form action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="casino">
+                    <input type="submit" class="btn btn-success shadow-lg p-3 pull-right" value="Find Gold!">
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="row">
+        <h3>Activities:</h3>
+        <div class="col-lg-12" style="height: 237px; overflow: scroll">
+            {% for log in request.session.activities reversed %} {% if "lost" in log %}
+            <h4 class="text-danger">{{ log }}</h4>
+            {% else %}
+            <h4 class="text-success">{{ log }}</h4>
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
