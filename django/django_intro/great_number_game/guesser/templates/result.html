@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+        
+        .YAH {
+            background-color: rgb(7, 221, 7);
+            color: white;
+            width: 300px;
+            height: 180px;
+            margin-bottom: 30px;
+        }
+        
+        .NAH {
+            background-color: red;
+            color: white;
+            width: 300px;
+            height: 100px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Great Number Game</h1>
+        <p>I am thinking of a number between 1 and 100</p>
+
+        {% if firstGuess == "Correct" %}
+        <div class="YAH">
+            <h1>Correct {{number}} is the number</h1>
+            <p>Would you like to play again?</p>
+            <form action="/" method="POST">
+                {% csrf_token %}
+                <button>HECK YESSSS!!!!</button>
+            </form>
+        </div>
+        {% endif %} {% if firstGuess == "Too High" %}
+        <div class="NAH">
+            <h1>Too High!</h1>
+            <p>Guess a lower number</p>
+        </div>
+        {% endif %}
+        <br> {% if firstGuess == "Too Low" %}
+        <div class="NAH">
+            <h1>Too Low!</h1>
+            <p>Guess a higher number</p>
+        </div>
+        {% endif %}
+        <br>
+
+        <form action="/show" method="POST">
+            {% csrf_token %}
+            <input type="number" name="guess" class="number" placeholder="Guess a number!">
+            <br><br>
+            <input class="submit" type="submit" value="GUESS!!!!!!" name="submit">
+
+        </form>
+        <h1>Attempt number {{attempts}}</h1>
+    </div>
+</body>
+
+</html>
