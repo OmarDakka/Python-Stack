@@ -3,7 +3,8 @@ import random
 
 
 def main(request):
-    del request.session["attempt"]
+    if "attempt" in request.session:
+        del request.session["attempt"]
     if "number" not in request.session:
         request.session['number'] = 0
     if "attempt" not in request.session:
