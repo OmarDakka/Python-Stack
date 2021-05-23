@@ -1,0 +1,1623 @@
+Microsoft Windows [Version 10.0.19042.928]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\python_stack>cd my_environments
+
+C:\python_stack\my_environments>call djangoPy3Env/Scripts/activate
+
+(djangoPy3Env) C:\python_stack\my_environments>cd ..
+
+(djangoPy3Env) C:\python_stack>cd django
+
+(djangoPy3Env) C:\python_stack\django>cd django_intro
+
+(djangoPy3Env) C:\python_stack\django\django_intro>django-admin startproject dojo_ninjas_proj
+
+(djangoPy3Env) C:\python_stack\django\django_intro>cd dojo_ninjas_proj
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>django-admin startapp dojo_ninjas_app
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>code .
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py makemigrations
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 581, in url_patterns
+    iter(patterns)
+TypeError: 'module' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\manage.py", line 21, in <module>
+    main()
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\manage.py", line 17, in main
+    execute_from_command_line(sys.argv)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\__init__.py", line 381, in execute_from_command_line
+    utility.execute()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\__init__.py", line 375, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\base.py", line 323, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\base.py", line 361, in execute
+    self.check()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\base.py", line 387, in check
+    all_issues = self._run_checks(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\base.py", line 377, in _run_checks
+    return checks.run_checks(**kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\registry.py", line 72, in run_checks
+    new_errors = check(app_configs=app_configs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\urls.py", line 23, in check_resolver
+    return check_method()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 399, in check
+    messages.extend(check_resolver(pattern))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\urls.py", line 23, in check_resolver
+    return check_method()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 398, in check
+    for pattern in self.url_patterns:
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\functional.py", line 80, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 588, in url_patterns
+    raise ImproperlyConfigured(msg.format(name=self.urlconf_name))
+django.core.exceptions.ImproperlyConfigured: The included URLconf '<module 'dojo_ninjas_app.urls' from 'C:\\python_stack\\django\\django_intro\\dojo_ninjas_proj\\dojo_ninjas_app\\urls.py'>' does not appear to have any patterns in it. If you see valid patterns in the file then the issue is probably caused by a circular import.
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py makemigrations
+Migrations for 'dojo_ninjas_app':
+  dojo_ninjas_app\migrations\0001_initial.py
+    - Create model Dojo
+    - Create model Ninja
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas_app, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying dojo_ninjas_app.0001_initial... OK
+  Applying sessions.0001_initial... OK
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py shell
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_ninjas_app.models import *
+>>> Dojo.objects.create(name = "First Dojo", city = "Indinapolis", state="Indiana")
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name = "Second Dojo", city = "Ramallah", state="Palestine")
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name = "Third Dojo", city = "Los Angeles", state="California")
+<Dojo: Dojo object (3)>
+>>> c = Dojo.objects.get(id=1)
+>>> print(c)
+Dojo object (1)
+>>> print(c.name)
+First Dojo
+>>> c.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+>>> print(c)
+Dojo object (None)
+>>> c = Dojo.objects.get(id=2)
+>>> c.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+>>> print(c)
+Dojo object (None)
+>>> c = Dojo.objects.get(id=3)
+>>> c.delete()
+(1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+>>> Dojo.objects.all().values()
+<QuerySet []>
+>>> Dojo.objects.create(name = "First Dojo", city = "Indinapolis", state="Indiana")
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name = "Second Dojo", city = "Ramallah", state="Palestine")
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name = "Third Dojo", city = "Los Angeles", state="California")
+<Dojo: Dojo object (6)>
+>>> first_dojo = Dojo.objects.get(id=4)
+>>> print(first_dojo)
+Dojo object (4)
+>>> Ninja.object.create(first_name = "Omar", last_name = "Daqah", dojo = first_dojo)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Ninja' has no attribute 'object'
+>>> Ninja.objects.create(first_name = "Omar", last_name = "Daqah", dojo = first_dojo)
+<Ninja: Ninja object (1)>
+>>> Ninja.objects.create(first_name = "Yazan", last_name = "Salameh", dojo = first_dojo)
+<Ninja: Ninja object (2)>
+>>> Ninja.objects.create(first_name = "Ibraheem", last_name = "Shweiki", dojo = first_dojo)
+<Ninja: Ninja object (3)>
+>>> second_dojo=Dojo.objects.get(id=5)
+>>> print(second_dojo)
+Dojo object (5)
+>>> Ninja.objects.create(first_name = "Mustafa", last_name = "Musleh", dojo = second_dojo)
+<Ninja: Ninja object (4)>
+>>> Ninja.objects.create(first_name = "Mahmoud", last_name = "Musleh", dojo = second_dojo)
+<Ninja: Ninja object (5)>
+>>> Ninja.objects.create(first_name = "Khattab", last_name = "Qadah", dojo = second_dojo)
+<Ninja: Ninja object (6)>
+>>> third_dojo = Dojo.objects.get(id=6)
+>>> Ninja.objects.create(first_name = "Kareem", last_name = "Daqah", dojo = third_dojo)
+<Ninja: Ninja object (7)>
+>>> Ninja.objects.create(first_name = "Mohammad", last_name = "Fitiani", dojo = third_dojo)
+<Ninja: Ninja object (8)>
+>>> Ninja.objects.create(first_name = "Ibrahim", last_name = "Rabah", dojo = third_dojo)
+<Ninja: Ninja object (9)>
+>>> first_dojo.ninjas
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x00000182835C18E0>
+>>> first_dojo.ninjas.all()
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+>>> first_dojo.ninjas.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Omar', 'last_name': 'Daqah', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 3, 9, 449603, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 3, 9, 449603, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Yazan', 'last_name': 'Salameh', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 3, 21, 190320, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 3, 21, 190320, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Ibraheem', 'last_name': 'Shweiki', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 11, 3, 34, 192199, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 3, 34, 193198, tzinfo=<UTC>)}]>
+>>> second_dojo.ninjas.all().values()
+<QuerySet [{'id': 4, 'first_name': 'Mustafa', 'last_name': 'Musleh', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 7, 30, 206161, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 7, 30, 206161, tzinfo=<UTC>)}, {'id': 5, 'first_name': 'Mahmoud', 'last_name': 'Musleh', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 7, 42, 131660, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 7, 42, 131660, tzinfo=<UTC>)}, {'id': 6, 'first_name': 'Khattab', 'last_name': 'Qadah', 'dojo_id': 5, 'created_at': datetime.datetime(2021, 5, 23, 11, 8, 4, 118615, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 8, 4, 118615, tzinfo=<UTC>)}]>
+>>> third_dojo.ninjas.all().values()
+<QuerySet [{'id': 7, 'first_name': 'Kareem', 'last_name': 'Daqah', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 10, 37, 707069, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 10, 37, 707069, tzinfo=<UTC>)}, {'id': 8, 'first_name': 'Mohammad', 'last_name': 'Fitiani', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 10, 54, 746016, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 10, 54, 746016, tzinfo=<UTC>)}, {'id': 9, 'first_name': 'Ibrahim', 'last_name': 'Rabah', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 11, 11, 7, 327610, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 11, 7, 327610, tzinfo=<UTC>)}]>
+>>> first_dojo.ninjas.firstname
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'RelatedManager' object has no attribute 'firstname'
+>>> first_dojo.ninjas.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'RelatedManager' object has no attribute 'first_name'
+>>> for ninjas in first_dojo.ninjas.all():
+... print(Ninja.first_name, Ninja.last_name)
+  File "<console>", line 2
+    print(Ninja.first_name, Ninja.last_name)
+    ^
+IndentationError: expected an indented block
+>>> for ninjas in first_dojo.ninjas.all():
+...     print(Ninja.first_name, Ninja.last_name)
+...
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340> <django.db.models.query_utils.DeferredAttribute object at 0x00000182834D23A0>
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340> <django.db.models.query_utils.DeferredAttribute object at 0x00000182834D23A0>
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340> <django.db.models.query_utils.DeferredAttribute object at 0x00000182834D23A0>
+>>> for ninjas in first_dojo.ninjas.all():
+...     print(Ninja.first_name)
+...
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340>
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340>
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340>
+>>> for ninja in first_dojo.ninjas.all():
+...     print(Ninja.first_name)
+...
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340>
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340>
+<django.db.models.query_utils.DeferredAttribute object at 0x00000182834D2340>
+>>> for ninjas in first_dojo.ninjas.all():
+...     print(ninjas.first_name, ninja.last_name)
+...
+Omar Shweiki
+Yazan Shweiki
+Ibraheem Shweiki
+>>> for ninjas in first_dojo.ninjas.all():
+...     print(ninjas.last_name)
+...
+Daqah
+Salameh
+Shweiki
+>>> for ninjas in second_dojo.ninjas.all():
+...     print(ninjas.first_name)
+...
+Mustafa
+Mahmoud
+Khattab
+>>> for ninjas in third_dojo.ninjas.all():
+...     print(ninjas.first_name)
+...
+Kareem
+Mohammad
+Ibrahim
+>>> Ninja.objects.last()
+<Ninja: Ninja object (9)>
+>>> Ninja.objects.last().dojo
+<Dojo: Dojo object (6)>
+>>> Ninja.objects.last().dojo.name
+'Third Dojo'
+>>> exit()
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py makemigrations
+No changes detected
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas_app, sessions
+Running migrations:
+  No migrations to apply.
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py makemigrations
+Migrations for 'dojo_ninjas_app':
+  dojo_ninjas_app\migrations\0002_dojo_desc.py
+    - Add field desc to dojo
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas_app, sessions
+Running migrations:
+  Applying dojo_ninjas_app.0002_dojo_desc... OK
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py shell
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> Dojo.objects.create(name="Fourth Dojo", city="Las Vegas", state="I dont even know", desc="New Dojo")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojo' is not defined
+>>> from dojo_ninjas_app import *
+>>> Dojo.objects.create(name="Fourth Dojo", city="Las Vegas", state="I dont even know", desc="New Dojo")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojo' is not defined
+>>> print(Dojo.objects.all())
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojo' is not defined
+>>> from dojo_ninjas_app.models import *
+>>> Dojo.objects.create(name="Fourth Dojo", city="Las Vegas", state="I dont even know", desc="New Dojo")
+<Dojo: Dojo object (7)>
+>>> exit()
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 14:55:03
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 14:55:11] "GET / HTTP/1.1" 200 815
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 49308)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+[23/May/2021 14:55:37] "GET / HTTP/1.1" 200 823
+[23/May/2021 14:55:51] "GET / HTTP/1.1" 200 831
+[23/May/2021 15:01:02] "GET / HTTP/1.1" 200 1591
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>ad
+'ad' is not recognized as an internal or external command,
+operable program or batch file.
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>asd
+'asd' is not recognized as an internal or external command,
+operable program or batch file.
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py makemigrations
+No changes detected
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas_app, sessions
+Running migrations:
+  No migrations to apply.
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py makemigrations
+Migrations for 'dojo_ninjas_app':
+  dojo_ninjas_app\migrations\0003_remove_dojo_desc.py
+    - Remove field desc from dojo
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_ninjas_app, sessions
+Running migrations:
+  Applying dojo_ninjas_app.0003_remove_dojo_desc... OK
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 15:12:17
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 15:12:19] "GET / HTTP/1.1" 200 1591
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 15:26:33
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'dojo.name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 9, in index
+    return render(request,"index.html", context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\defaulttags.py", line 811, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 36: 'dojo.name', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+[23/May/2021 15:28:39] "GET / HTTP/1.1" 500 145461
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 9, in index
+    return render(request,"index.html", context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\defaulttags.py", line 811, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 449, in parse
+    raise self.error(token, e)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 447, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 662, in __init__
+    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '% dojo.name %' from '% dojo.name %'
+[23/May/2021 15:29:29] "GET / HTTP/1.1" 500 148931
+[23/May/2021 15:29:45] "GET / HTTP/1.1" 200 1554
+[23/May/2021 15:30:19] "GET / HTTP/1.1" 200 1852
+[23/May/2021 15:31:11] "POST /add_dojo HTTP/1.1" 302 0
+[23/May/2021 15:31:11] "GET / HTTP/1.1" 200 1926
+[23/May/2021 15:32:27] "GET / HTTP/1.1" 200 1958
+[23/May/2021 15:32:31] "GET / HTTP/1.1" 200 1958
+[23/May/2021 15:32:33] "GET / HTTP/1.1" 200 1958
+[23/May/2021 15:36:03] "GET / HTTP/1.1" 200 2098
+[23/May/2021 15:36:25] "GET / HTTP/1.1" 200 2223
+[23/May/2021 15:39:22] "GET / HTTP/1.1" 200 4048
+[23/May/2021 15:47:09] "GET / HTTP/1.1" 200 2318
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py shell
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_ninjas_app.models import *
+>>> print(Ninja.dojo)
+<django.db.models.fields.related_descriptors.ForwardManyToOneDescriptor object at 0x000002484CCC2460>
+>>> Ninja.dojo
+<django.db.models.fields.related_descriptors.ForwardManyToOneDescriptor object at 0x000002484CCC2460>
+>>> print(ninjas.id)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'ninjas' is not defined
+>>> print(ninjas)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'ninjas' is not defined
+>>> print(Dojo)
+<class 'dojo_ninjas_app.models.Dojo'>
+>>> print(Ninja.ninjas)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Ninja' has no attribute 'ninjas'
+>>> print(Ninja.dojo)
+<django.db.models.fields.related_descriptors.ForwardManyToOneDescriptor object at 0x000002484CCC2460>
+>>> print(Ninja.dojo.value())
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ForwardManyToOneDescriptor' object has no attribute 'value'
+>>> print(Ninja.dojo.all().value())
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ForwardManyToOneDescriptor' object has no attribute 'all'
+>>> print(Dojo.objects.all().values())
+<QuerySet [{'id': 4, 'name': 'First Dojo', 'city': 'Indinapolis', 'state': 'Indiana', 'created_at': datetime.datetime(2021, 5, 23, 10, 55, 42, 525791, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 55, 42, 525791, tzinfo=<UTC>)}, {'id': 5, 'name': 'Second Dojo', 'city': 'Ramallah', 'state': 'Palestine', 'created_at': datetime.datetime(2021, 5, 23, 10, 55, 46, 145387, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 55, 46, 145387, tzinfo=<UTC>)}, {'id': 6, 'name': 'Third Dojo', 'city': 'Los Angeles', 'state': 'California', 'created_at': datetime.datetime(2021, 5, 23, 10, 55, 47, 712432, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 10, 55, 47, 712432, tzinfo=<UTC>)}, {'id': 7, 'name': 'Fourth Dojo', 'city': 'Las Vegas', 'state': 'I dont even know', 'created_at': datetime.datetime(2021, 5, 23, 11, 37, 15, 697910, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 37, 15, 697910, tzinfo=<UTC>)}, {'id': 8, 'name': 'Fifth Dojo', 'city': 'Bethlehem', 'state': 'Palestine', 'created_at': datetime.datetime(2021, 5, 23, 12, 31, 11, 592985, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 31, 11, 592985, tzinfo=<UTC>)}]>
+>>> ninja = Dojo.objects.filter(ninja = ninja)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'ninja' is not defined
+>>> ninja = Dojo.objects.filter(ninja = Ninja)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1315, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1190, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1049, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1419, in names_to_path
+    raise FieldError("Cannot resolve keyword '%s' into field. "
+django.core.exceptions.FieldError: Cannot resolve keyword 'ninja' into field. Choices are: city, created_at, id, name, ninjas, state, updated_at
+>>> ninja = Dojo.objects.filter(ninjas = ninja)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'ninja' is not defined
+>>> ninja = Dojo.objects.filter(ninjas = Ninja)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1315, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1251, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1116, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\fields\related_lookups.py", line 115, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\fields\__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'ModelBase'
+>>> Dojo.objects.filter(ninja = ninja)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'ninja' is not defined
+>>> Dojo.objects.filter(ninjas = Ninja)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1315, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1251, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1116, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\lookups.py", line 20, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\fields\related_lookups.py", line 115, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\fields\__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'ModelBase'
+>>> Ninja.Dojo.id
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Ninja' has no attribute 'Dojo'
+>>> c = Dojo.objects.get(id=6)
+>>> c.dojo
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Dojo' object has no attribute 'dojo'
+>>> c.Dojo
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Dojo' object has no attribute 'Dojo'
+>>> c.Dojo.name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Dojo' object has no attribute 'Dojo'
+>>> ninja = Ninja.objects.get(id=5)
+>>> ninja.dojo
+<Dojo: Dojo object (5)>
+>>> ninja.dojo.name
+'Second Dojo'
+>>> exit()
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 16:20:41
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 16:20:46] "GET / HTTP/1.1" 200 2682
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 59883)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+[23/May/2021 16:31:14] "GET / HTTP/1.1" 200 2682
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 59960)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+Internal Server Error: /add_ninja
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'last_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 16, in add_ninja
+    Ninja.objects.create(first_name= request.POST["first_name"], last_name = request.POST["last_name"], dojo = ["dojo_select"])
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\datastructures.py", line 80, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'last_name'
+[23/May/2021 16:31:28] "POST /add_ninja HTTP/1.1" 500 74376
+Internal Server Error: /add_ninja
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'last_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 16, in add_ninja
+    Ninja.objects.create(first_name= request.POST["first_name"], last_name = request.POST["last_name"], dojo = ["dojo_select"])
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\datastructures.py", line 80, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'last_name'
+[23/May/2021 16:31:44] "POST /add_ninja HTTP/1.1" 500 74511
+Internal Server Error: /add_ninja
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'last_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 16, in add_ninja
+    Ninja.objects.create(first_name= request.POST["first_name"], last_name = request.POST["last_name"], dojo = ["dojo_select"])
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\datastructures.py", line 80, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'last_name'
+[23/May/2021 16:32:08] "POST /add_ninja HTTP/1.1" 500 74511
+[23/May/2021 16:32:12] "GET / HTTP/1.1" 200 2682
+Internal Server Error: /add_ninja
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 16, in add_ninja
+    Ninja.objects.create(first_name= request.POST["first_name"], last_name = request.POST["last_name"], dojo = ["dojo_select"])
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\base.py", line 483, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\fields\related_descriptors.py", line 206, in __set__
+    raise ValueError(
+ValueError: Cannot assign "['dojo_select']": "Ninja.dojo" must be a "Dojo" instance.
+[23/May/2021 16:32:21] "POST /add_ninja HTTP/1.1" 500 84833
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 16:33:57
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 16:33:59] "GET / HTTP/1.1" 200 2777
+Internal Server Error: /add_ninja
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 16, in add_ninja
+    Ninja.objects.create(first_name= request.POST["first_name"], last_name = request.POST["last_name"], dojo = ["dojo_option"])
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\base.py", line 483, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\fields\related_descriptors.py", line 206, in __set__
+    raise ValueError(
+ValueError: Cannot assign "['dojo_option']": "Ninja.dojo" must be a "Dojo" instance.
+[23/May/2021 16:34:10] "POST /add_ninja HTTP/1.1" 500 84833
+[23/May/2021 16:38:29] "GET / HTTP/1.1" 200 2816
+[23/May/2021 16:38:55] "GET / HTTP/1.1" 200 2826
+[23/May/2021 16:39:29] "GET / HTTP/1.1" 200 3083
+[23/May/2021 16:41:23] "GET / HTTP/1.1" 200 3316
+[23/May/2021 16:41:30] "GET / HTTP/1.1" 200 3325
+[23/May/2021 16:42:04] "GET / HTTP/1.1" 200 3316
+[23/May/2021 16:42:20] "GET / HTTP/1.1" 200 3325
+[23/May/2021 16:43:08] "GET / HTTP/1.1" 200 3201
+[23/May/2021 16:43:13] "GET / HTTP/1.1" 200 3192
+[23/May/2021 16:43:23] "GET / HTTP/1.1" 200 3225
+[23/May/2021 16:44:11] "GET / HTTP/1.1" 200 3267
+[23/May/2021 16:44:12] "GET / HTTP/1.1" 200 3267
+[23/May/2021 16:46:58] "GET / HTTP/1.1" 200 3218
+[23/May/2021 16:47:15] "GET / HTTP/1.1" 200 3260
+[23/May/2021 16:53:09] "GET / HTTP/1.1" 200 3195
+Internal Server Error: /add_ninja
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 16, in add_ninja
+    Ninja.objects.create(first_name= request.POST["first_name"], last_name = request.POST["last_name"], dojo = ["dojo_option"])
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\base.py", line 483, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\fields\related_descriptors.py", line 206, in __set__
+    raise ValueError(
+ValueError: Cannot assign "['dojo_option']": "Ninja.dojo" must be a "Dojo" instance.
+[23/May/2021 16:53:22] "POST /add_ninja HTTP/1.1" 500 84840
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 16:53:49
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Internal Server Error: /add_ninja
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 16, in add_ninja
+    Ninja.objects.create(first_name= request.POST["first_name"], last_name = request.POST["last_name"], dojo = ["dojo.name"])
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 420, in create
+    obj = self.model(**kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\base.py", line 483, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\fields\related_descriptors.py", line 206, in __set__
+    raise ValueError(
+ValueError: Cannot assign "['dojo.name']": "Ninja.dojo" must be a "Dojo" instance.
+[23/May/2021 16:53:53] "POST /add_ninja HTTP/1.1" 500 84820
+[23/May/2021 16:56:58] "GET / HTTP/1.1" 200 3195
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 17:34:22
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 17:34:27] "GET / HTTP/1.1" 200 3195
+[23/May/2021 17:34:40] "POST /add_ninja HTTP/1.1" 302 0
+[23/May/2021 17:34:40] "GET / HTTP/1.1" 200 3243
+[23/May/2021 17:45:39] "POST /add_ninja HTTP/1.1" 302 0
+[23/May/2021 17:45:39] "GET / HTTP/1.1" 200 3295
+[23/May/2021 18:23:34] "GET / HTTP/1.1" 200 3339
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 53553)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+[23/May/2021 18:24:12] "GET / HTTP/1.1" 200 3313
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 53558)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+[23/May/2021 18:28:21] "GET / HTTP/1.1" 200 3308
+[23/May/2021 18:28:46] "GET / HTTP/1.1" 200 3374
+[23/May/2021 18:30:18] "GET / HTTP/1.1" 200 3437
+[23/May/2021 18:30:41] "GET / HTTP/1.1" 200 3445
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:36:19
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:36:23
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 18:36:24] "GET / HTTP/1.1" 200 4695
+[23/May/2021 18:38:07] "GET / HTTP/1.1" 200 4815
+[23/May/2021 18:38:23] "GET / HTTP/1.1" 200 4735
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:44:22
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:44:42
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 18:44:47] "GET / HTTP/1.1" 200 4735
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 53766)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+Not Found: /delete_dojo
+[23/May/2021 18:44:50] "POST /delete_dojo HTTP/1.1" 404 2494
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:45:08
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\threading.py", line 954, in _bootstrap_inner
+    self.run()
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\threading.py", line 892, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\autoreload.py", line 54, in wrapper
+    fn(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\commands\runserver.py", line 117, in inner_run
+    self.check(display_num_errors=True)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\base.py", line 387, in check
+    all_issues = self._run_checks(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\base.py", line 377, in _run_checks
+    return checks.run_checks(**kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\registry.py", line 72, in run_checks
+    new_errors = check(app_configs=app_configs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\urls.py", line 23, in check_resolver
+    return check_method()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 398, in check
+    for pattern in self.url_patterns:
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\functional.py", line 80, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 579, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\functional.py", line 80, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 572, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 855, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_proj\urls.py", line 21, in <module>
+    path('',include("dojo_ninjas_app.urls"))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 855, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\urls.py", line 8, in <module>
+    path('delete_dojo', views.delete_ninja)
+AttributeError: module 'dojo_ninjas_app.views' has no attribute 'delete_ninja'
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:45:45
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 18:45:49] "GET / HTTP/1.1" 200 4735
+Internal Server Error: /delete_dojo
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 20, in delete_dojo
+    myDojo = Dojo.objects.get(Dojo.name)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 399, in get
+    clone = self.filter(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1315, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1187, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable DeferredAttribute object
+[23/May/2021 18:45:50] "POST /delete_dojo HTTP/1.1" 500 98287
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:46:28
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 18:46:30] "GET / HTTP/1.1" 200 4735
+Internal Server Error: /delete_dojo
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 20, in delete_dojo
+    myDojo = Dojo.objects.get(Dojo.id)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 399, in get
+    clone = self.filter(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 892, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 910, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1290, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1315, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\sql\query.py", line 1187, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable DeferredAttribute object
+[23/May/2021 18:46:33] "POST /delete_dojo HTTP/1.1" 500 98283
+[23/May/2021 18:46:59] "GET / HTTP/1.1" 200 4735
+[23/May/2021 18:47:51] "GET / HTTP/1.1" 200 4795
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:48:22
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 18:48:40
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 19:14:05
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 19:14:07] "GET / HTTP/1.1" 200 4880
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 52710)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+Internal Server Error: /delete_dojo
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 20, in delete_dojo
+    myDojo = Dojo.objects.get(name = request.POST['dojo.name'])
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\db\models\query.py", line 406, in get
+    raise self.model.DoesNotExist(
+dojo_ninjas_app.models.Dojo.DoesNotExist: Dojo matching query does not exist.
+[23/May/2021 19:14:09] "POST /delete_dojo HTTP/1.1" 500 74345
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 19:15:06
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 22:04:14
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 22:04:18] "GET / HTTP/1.1" 200 4870
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 56436)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+Internal Server Error: /delete_dojo
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: delete_dojo() missing 1 required positional argument: 'pk'
+[23/May/2021 22:04:21] "POST /delete_dojo HTTP/1.1" 500 62568
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 22:11:42
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\base.py", line 75, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+KeyError: 'dojos'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 9, in index
+    return render(request,"index.html", context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\base.py", line 86, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'dojos' is not a registered namespace
+[23/May/2021 22:11:49] "GET / HTTP/1.1" 500 138592
+Not Found: /favicon.ico
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 56533)
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socketserver.py", line 747, in __init__
+    self.handle()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 171, in handle
+    self.handle_one_request()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\servers\basehttp.py", line 179, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine
+----------------------------------------
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 22:13:07
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 9, in index
+    return render(request,"index.html", context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 668, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'delete_dojo' with arguments '('',)' not found. 1 pattern(s) tried: ['delete/(?P<pk>[0-9]+)/$']
+[23/May/2021 22:13:12] "GET / HTTP/1.1" 500 139958
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 22:13:59
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 22:14:24
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py", line 9, in index
+    return render(request,"index.html", context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\template\defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 668, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'delete_dojo' with arguments '('',)' not found. 1 pattern(s) tried: ['delete/(?P<pk>[0-9]+)/$']
+[23/May/2021 22:14:30] "GET / HTTP/1.1" 500 139958
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\views.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\threading.py", line 954, in _bootstrap_inner
+    self.run()
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\threading.py", line 892, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\autoreload.py", line 54, in wrapper
+    fn(*args, **kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\commands\runserver.py", line 117, in inner_run
+    self.check(display_num_errors=True)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\base.py", line 387, in check
+    all_issues = self._run_checks(
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\management\base.py", line 377, in _run_checks
+    return checks.run_checks(**kwargs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\registry.py", line 72, in run_checks
+    new_errors = check(app_configs=app_configs)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\core\checks\urls.py", line 23, in check_resolver
+    return check_method()
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 398, in check
+    for pattern in self.url_patterns:
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\functional.py", line 80, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 579, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\utils\functional.py", line 80, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\resolvers.py", line 572, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 855, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_proj\urls.py", line 21, in <module>
+    path('',include("dojo_ninjas_app.urls"))
+  File "C:\python_stack\my_environments\djangoPy3Env\lib\site-packages\django\urls\conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\RelaX\AppData\Local\Programs\Python\Python39\lib\importlib\__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 855, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\urls.py", line 9, in <module>
+    url(r'^delete/(?P<pk>[0-9]+)/$', views.delete_dojo, name='delete_dojo')
+AttributeError: module 'dojo_ninjas_app.views' has no attribute 'delete_dojo'
+C:\python_stack\django\django_intro\dojo_ninjas_proj\dojo_ninjas_app\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+May 23, 2021 - 22:15:56
+Django version 2.2.4, using settings 'dojo_ninjas_proj.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[23/May/2021 22:15:57] "GET / HTTP/1.1" 200 4530
+[23/May/2021 22:16:14] "POST /add_dojo HTTP/1.1" 302 0
+[23/May/2021 22:16:14] "GET / HTTP/1.1" 200 4911
+
+(djangoPy3Env) C:\python_stack\django\django_intro\dojo_ninjas_proj>cd ..
+
+(djangoPy3Env) C:\python_stack\django\django_intro>django-admin startproject books_authors_proj
+
+(djangoPy3Env) C:\python_stack\django\django_intro>cd books_authors_proj
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>django-admin startapp books_authors_app
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>code .
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py makemigrations
+Migrations for 'books_authors_app':
+  books_authors_app\migrations\0001_initial.py
+    - Create model books
+    - Create model authors
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, books_authors_app, contenttypes, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying books_authors_app.0001_initial... OK
+  Applying sessions.0001_initial... OK
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py shell
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from books_authors_app.models import *
+>>> exit()
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py makemigrations
+Did you rename the books_authors_app.books model to book? [y/N] y
+Migrations for 'books_authors_app':
+  books_authors_app\migrations\0002_auto_20210523_2303.py
+    - Create model author
+    - Rename model books to book
+    - Delete model authors
+    - Add field books to author
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, books_authors_app, contenttypes, sessions
+Running migrations:
+  Applying books_authors_app.0002_auto_20210523_2303... OK
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py shell
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from books_authors_app.models import *
+>>> book.objects.create(title = "C Sharp", desc="A book about C Sharp")
+<book: book object (1)>
+>>> book.objects.create(title = "Java", desc="A book about Java")
+<book: book object (2)>
+>>> book.objects.create(title = "Python", desc="A book about Python")
+<book: book object (3)>
+>>> book.objects.create(title = "PHP", desc="A book about PHP")
+<book: book object (4)>
+>>> book.objects.create(title = "Ruby", desc="A book about Ruby")
+<book: book object (5)>
+>>> author.objects.create(first_name = "Jane", last_name = "Austen")
+<author: author object (1)>
+>>> author.objects.create(first_name = "Emily", last_name = "Dickinson")
+<author: author object (2)>
+>>> author.objects.create(first_name = "Fyodor", last_name = "Dostoevsky")
+<author: author object (3)>
+>>> author.objects.create(first_name = "William", last_name = "Shakespeare")
+<author: author object (4)>
+>>> author.objects.create(first_name = "Lau", last_name = "Tzu")
+<author: author object (5)>
+>>> exit()
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py makemigrations
+You are trying to add a non-nullable field 'notes' to author without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> default note
+Invalid input: unexpected EOF while parsing (<string>, line 1)
+>>> "default note"
+Migrations for 'books_authors_app':
+  books_authors_app\migrations\0003_author_notes.py
+    - Add field notes to author
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, books_authors_app, contenttypes, sessions
+Running migrations:
+  Applying books_authors_app.0003_author_notes... OK
+
+(djangoPy3Env) C:\python_stack\django\django_intro\books_authors_proj>python manage.py shell
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> c = book.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'book' is not defined
+>>> from books_authors_app.models import *
+>>> c = book.objects.get(id=1)
+>>> c.name = "C#"
+>>> c = author.objects.get(id=4)
+>>> c.first_name = "Bill"
+>>> jane = author.objects.get(id=1)
+>>> cBook = book.objects.get(id=1)
+>>> java= book.objects.get(id=2)
+>>> java
+<book: book object (2)>
+>>> cBook
+<book: book object (1)>
+>>> jane
+<author: author object (1)>
+>>> jane.books.add(cBook)
+>>> jane.books.add(java)
+>>> jane.books.all()
+<QuerySet [<book: book object (1)>, <book: book object (2)>]>
+>>> jane.books.all().values()
+<QuerySet [{'id': 1, 'title': 'C Sharp', 'desc': 'A book about C Sharp', 'created_at': datetime.datetime(2021, 5, 23, 20, 6, 45, 428363, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 20, 6, 45, 428363, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'A book about Java', 'created_at': datetime.datetime(2021, 5, 23, 20, 6, 59, 514318, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 20, 6, 59, 514318, tzinfo=<UTC>)}]>
+>>> jane.books.all().name()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> jane.books.all().name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'name'
+>>> emily = author.objects.get(id=2)
+>>> python = book.objects.get(id=3)
+>>> emily.books.add(cBook)
+>>> emily.books.add(java)
+>>> emily.books.add(python)
+>>> fyodor = author.objects.get(id = 3)
+>>> php = book.objects.get(id=4)
+>>> fyodor.books.add(cBook)
+>>> fyodor.books.add(java)
+>>> fyodor.books.add(python)
+>>> fyodor.books.add(php)
+>>> fyodor.books.all()
+<QuerySet [<book: book object (1)>, <book: book object (2)>, <book: book object (3)>, <book: book object (4)>]>
+>>> william = author.objects.get(id =4)
+>>> ruby = book.objects.get(id =5)
+>>> fyodor.books.add(cBook)
+>>> fyodor.books.add(java)
+>>> fyodor.books.add(python)
+>>> fyodor.books.add(php)
+>>> fyodor.books.add(ruby)
+>>> python.authors.all()
+<QuerySet [<author: author object (2)>, <author: author object (3)>]>
+>>> python.authors.remove(jane)
+>>> python.authors.all()
+<QuerySet [<author: author object (2)>, <author: author object (3)>]>
+>>> lau = author.objects.get(id=5)
+>>> ruby.authors.add(lau)
+>>> ruby.authors.all()
+<QuerySet [<author: author object (3)>, <author: author object (5)>]>
+>>> fyodor.books.all()
+<QuerySet [<book: book object (1)>, <book: book object (2)>, <book: book object (3)>, <book: book object (4)>, <book: book object (5)>]>
+>>> fyodor.books.remove(ruby)
+>>> fyodor.books.all()
+<QuerySet [<book: book object (1)>, <book: book object (2)>, <book: book object (3)>, <book: book object (4)>]>
+>>> william.books.add(cBook)
+>>> william.books.add(java)
+>>> william.books.add(python)
+>>> william.books.add(php)
+>>> william.books.add(ruby)
+>>> for book in fyodor.books.all():
+...     print(book.title)
+...
+C Sharp
+Java
+Python
+PHP
+>>> for author in ruby.authors.all():
+...     print(author.first_name)
+...
+Lau
+William
+>>>
