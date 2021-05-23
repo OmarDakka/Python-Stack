@@ -5,11 +5,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dojos and Ninjas</title>
+    <style>
+        .container {
+            border-bottom: 2px solid black;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .middle {
+            margin: 34px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
-
+    <center>
+        <div class="container">
+            <div class="middle">
+                <h1>Add a Dojo</h1>
+                <form action="/add_dojo" method="POST">
+                    {% csrf_token %}
+                    <label for="dojo_name">Name</label>
+                    <input type="text" name="dojo_name"><br><br>
+                    <label for="dojo_city">City</label>
+                    <input type="text" name="dojo_city"><br><br>
+                    <label for="dojo_state">State</label>
+                    <input type="text" name="dojo_state"><br><br>
+                    <input type="submit" value="Add">
+                </form>
+            </div>
+            <div class="middle">
+                <h1>Add a Ninja</h1>
+                <form action="/add_ninja" method="POST">
+                    {% csrf_token %}
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name"><br><br>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name"><br><br>
+                    <label for="dojo_select">Dojo</label>
+                    <select name="dojo_select">
+                    {% for dojo in all_the_dojos%}
+                    <option name="dojo_option">{{ dojo.name }}</option>
+                    {% endfor %}
+                </select><br><br>
+                    <input type="submit" value="Add">
+            </div>
+        </div>
+        </form>
+        <h1>All the Dojos</h1>
+        {% for dojo in all_the_dojos %}
+        <form action="/delete_dojo" method="POST">
+            {% csrf_token %}
+            <h2> Ninjas at the {{ dojo.name }}
+            </h2>
+        </form>
+        {% for ninja in all_the_ninja %} {% if ninja.dojo.name == dojo.name %}
+        <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+        {% endif %} {% endfor %} {% endfor %}
+    </center>
 </body>
 
 </html>
