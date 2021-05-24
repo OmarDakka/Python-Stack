@@ -31,7 +31,6 @@ def add_author_to_book(request,book_id):
         thisBook = book.objects.get(id=int(book_id))
         thisAuthor = author.objects.get(id = request.POST['author_id'])
         thisBook.authors.add(thisAuthor)
-    print(book_id)
     return redirect("/view_book/"+str(book_id))    
 
 
