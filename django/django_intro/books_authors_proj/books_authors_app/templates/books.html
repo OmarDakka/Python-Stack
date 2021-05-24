@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <style>
+        .container {
+            font-family: arial, sans-serif;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        
+        .travel {
+            width: 350px;
+            height: 100px;
+            margin-top: 50px;
+            margin-left: 90px;
+            font-size: x-large;
+        }
+        
+        .add_button {
+            width: 200px;
+            height: 50px;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner_container">
+            <form action="/add_book" method="POST">
+                {% csrf_token %}
+                <h1>Add a Book</h1>
+                <label for="book_title">Title</label>
+                <input type="text" name="book_title" required><br><br>
+                <label for="book_desc">Description</label>
+                <textarea name="book_desc" rows="4" cols="40" required></textarea><br><br>
+                <input type="submit" value="Add" class="add_button">
+            </form>
+
+            <form action="/go_to_authors" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="GO TO AUTHORS" class="travel">
+            </form>
+        </div>
+        <table>
+            <tr>
+                <th>
+                    <h1>ID</h1>
+                </th>
+                <th>
+                    <h1>Title</h1>
+                </th>
+                <th>
+                    <h1>Action</h1>
+                </th>
+            </tr>
+            {%for book in all_the_books %}
+            <tr>
+                <td>
+                    <h3>{{ book.id }}</h3>
+                </td>
+                <td>
+                    <h3>{{ book.title }}</h3>
+                </td>
+                <td>
+                    <h3><a href="/view_book/{{ book.id }}">View</a></h3>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

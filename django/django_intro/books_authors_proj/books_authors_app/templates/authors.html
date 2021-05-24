@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    <style>
+        .container {
+            font-family: arial, sans-serif;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        
+        .travel {
+            width: 350px;
+            height: 100px;
+            margin-top: 50px;
+            margin-left: 37px;
+            font-size: x-large;
+        }
+        
+        .add_button {
+            width: 200px;
+            height: 50px;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner_container">
+            <form action="/add_author" method="POST">
+                {% csrf_token %}
+                <h1>Add an Author</h1>
+                <label for="first_name">First Name</label>
+                <input type="text" name="first_name" required><br><br>
+                <label for="last_name">Last Name</label>
+                <input type="text" name="last_name" required><br><br>
+                <label for="notes">Notes</label>
+                <textarea name="notes" rows="4" cols="40" required></textarea><br><br>
+                <input type="submit" value="Add" class="add_button">
+            </form>
+
+            <form action="/go_to_books" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="GO BACK TO BOOKS" class="travel">
+            </form>
+        </div>
+        <table>
+            <tr>
+                <th>
+                    <h1>ID</h1>
+                </th>
+                <th>
+                    <h1>Name</h1>
+                </th>
+                <th>
+                    <h1>Action</h1>
+                </th>
+            </tr>
+            {%for author in all_the_authors %}
+            <tr>
+                <td>
+                    <h3>{{ author.id }}</h3>
+                </td>
+                <td>
+                    <h3>{{ author.first_name }} {{ author.last_name }}</h3>
+                </td>
+                <td>
+                    <h3><a href="/view_author/{{ author.id }}">View</a></h3>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <center>
+
+    </center>
+</body>
+
+</html>
