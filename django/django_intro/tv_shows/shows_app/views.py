@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
 from time import gmtime, strftime
+from django.contrib import messages
 # Create your views here.
 
 def show(request):
@@ -22,9 +23,15 @@ def view_show(request, show_id):
 
 
 def add_show(request):
-    if request.method=="POST":
-        add_show = shows.objects.create(title=request.POST["title"],network=request.POST["network"],release_date=request.POST["date"],description =request.POST['description'])
-        return redirect(f"show/{add_show.id}")
+    errors = shows.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request,value)
+            return redirect("shows/new")
+    else:
+        if request.method=="POST":
+            add_show = shows.objects.create(title=request.POST["title"],network=request.POST["network"],release_date=request.POST["date"],description =request.POST['description'])
+            return redirect(f"show/{add_show.id}")
 
 def new(request):
     return render(request,"add_show.html",)
@@ -41,13 +48,19 @@ def edit_show(request, show_id):
 
 def edit(request,show_id):
     this_show = shows.objects.get(id = int(show_id))
-    if request.method=="POST":
-        this_show.title=request.POST["title"]
-        this_show.network=request.POST["network"]
-        this_show.release_date=request.POST["date"]
-        this_show.description =request.POST['description']
-        this_show.save()
-        return redirect(f"/show/{show_id}")
+    errors = shows.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request,value)
+            return redirect(f"/show/{show_id}/edit")
+    else:    
+        if request.method=="POST":
+            this_show.title=request.POST["title"]
+            this_show.network=request.POST["network"]
+            this_show.release_date=request.POST["date"]
+            this_show.description =request.POST['description']
+            this_show.save()
+            return redirect(f"/show/{show_id}")
 
 def delete(request,show_id):
     this_show = shows.objects.get(id = int(show_id))
