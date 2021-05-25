@@ -2,6 +2,10 @@ from django.shortcuts import render,redirect
 from .models import *
 from time import gmtime, strftime
 # Create your views here.
+
+def show(request):
+    return redirect("/shows")
+
 def index(request):
     context = {
         "all_the_shows" : shows.objects.all()
