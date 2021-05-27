@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register or Login</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        label {
+            display: table-cell;
+            text-align: left;
+        }
+        
+        input {
+            display: table-cell;
+        }
+        
+        div.row {
+            display: table-row;
+        }
+        
+        .error {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>Registration</h1>
+            <form action='/reg' method="POST">
+                {% csrf_token %}
+
+                <div class="row">
+                    <label for="name">First Name:</label>
+                    <input type="text" name="fname"><br><br>
+                </div>
+                <div class="row">
+                    <label for="lname">Last Name: </label>
+                    <input type="text" name="lname"><br><br>
+                </div>
+                <div class="row">
+                    <label for="email"> Email: </label>
+                    <input type="email" name="email"><br><br>
+                </div>
+                <div class="row">
+                    <label for="birthday"> Birthday: </label>
+                    <input type="date" name="birthday"><br><br>
+                </div>
+                <div class="row">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password"><br><br>
+                </div>
+                <div class="row">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" name="confirmPassword">
+                    <br><br>
+                </div>
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+        <div>
+            <h1>Login</h1>
+            <form action='/login' method="POST">
+                {% csrf_token %}
+
+                <div class="row">
+                    <label for="email"> Email: </label>
+                    <input type="email" name="email">
+                    <br><br>
+                </div>
+                <div class="row">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password">
+                    <br><br>
+                </div>
+
+                <br><br>
+                <button type="submit">Login</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="error">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+
+</html>
