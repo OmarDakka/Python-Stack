@@ -49,7 +49,7 @@
                             </form>
                             <br><br> {% for create in creation%}
                             <div>
-                                <div class="d-flex flex-start align-items-center ">
+                                <div class="d-flex flex-start justify-content-between align-items-center ">
                                     <div class="card" style="margin-bottom: 15px;">
                                         <div class="card-header">
                                             <small class="text-danger">
@@ -61,6 +61,10 @@
                                             {{create.text}}
                                         </div>
                                     </div>
+                                    <!-- <form action="/wall/delete_message" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary btn-md">Delete Message</button>
+                                    </form> -->
                                 </div>
                                 {% for comment in create.message.all %}
                                 <div class="d-flex flex-row-reverse">

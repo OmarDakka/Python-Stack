@@ -19,12 +19,15 @@ class comments(models.Model):
 
 
 def post_creation(text, users):
-    print("wassup")
-    print(text)
-    print(users)
     created_post = posts.objects.create(text = text, owners = users)
     return created_post
 
 def comment_creation(comment,owner,post_id):
     created_comment = comments.objects.create(comment = comment, owner = owner, post = posts.objects.get(id = post_id))
     return created_comment
+
+# def post_deletion(post_id):
+#     remove = posts.objects.get(id = post_id)
+#     remove.delete()
+#     return remove
+    
