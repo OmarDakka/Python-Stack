@@ -23,9 +23,17 @@ class Category(models.Model):
     objects = UserManager()
 
     def to_json(self):
+        tasks = Task.objects.filter(category = self)
+
+        task_result = []
+
+        for task in tasks:
+            task_result.append(task.to_json())
+        
         return {
             "id": self.id,
-            "title" : self.title
+            "title" : self.title,
+            "tasks": task_result
         }
 
 
@@ -44,7 +52,6 @@ class Task(models.Model):
         return {
             "id": self.id,
             "title" : self.title,
-            "category": self.category.to_json(),
             "description": self.description,
             "duedate": self.duedate
         }
