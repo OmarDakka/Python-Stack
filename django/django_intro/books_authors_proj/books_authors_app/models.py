@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-
+# apply MTV
 class book(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
