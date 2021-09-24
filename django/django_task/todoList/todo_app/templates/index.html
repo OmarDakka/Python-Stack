@@ -10,9 +10,12 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
 </head>
-
 <body>
+    <!--Nav-bar on top of the page that displays the website name and a welcome message to the user
+     and showing the logout button-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/todo">To-Do</a>
@@ -24,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">Welcome, {{ user }}</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -36,11 +39,11 @@
 
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-primary category" style="margin-top: 20px; margin-left: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Create Category
     </button>
 
-    <!-- Modal -->
+    <!--Category Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -51,7 +54,7 @@
                 <div class="modal-body">
                     <form id="categoryForm">
                         <label for="title">Category Title: </label><br><br>
-                        <input type="text" id="title" name="title" value=""><br><br>
+                        <input type="text" id="title" name="title" value="" required><br><br>
                         <input type="hidden" id="created_by" value="{{ user_id }}">
                         <input type="hidden" id="id" value=0>
                     </form>
@@ -63,7 +66,7 @@
             </div>
         </div>
     </div>
-
+    <!--Modal for the Task-->
     <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -74,11 +77,11 @@
                 <div class="modal-body">
                     <form id="taskForm">
                         <label for="taskTitle">Task Title: </label><br><br>
-                        <input type="text" id="taskTitle" name="taskTitle" value=""><br><br>
+                        <input type="text" id="taskTitle" name="taskTitle" value="" required><br><br>
                         <label for="description">Task Description: </label><br><br>
-                        <input type="text" id="description" name="description" value=""><br><br>
+                        <input type="text" id="description" name="description" value="" required><br><br>
                         <label for="duedate">Task Due-Date: </label><br><br>
-                        <input type="date" id="duedate" name="duedate" value=""><br><br>
+                        <input type="date" id="duedate" name="duedate" value="" required><br><br>
                         <input type="hidden" id="task_created_by" value="{{ user_id }}">
                         <input type="hidden" id="category_id" value=0>
                         <input type="hidden" id="task_id" value=0>

@@ -1,3 +1,4 @@
+//A function to create a div with a card class, used in creating the category card div and the task card div
 let createCard = (width = "18rem") => {
     let div = document.createElement('div');
     div.classList.add("card");
@@ -12,6 +13,10 @@ let createCard = (width = "18rem") => {
     return { div, body, title };
 };
 
+//a function that starts when wanting the create the category and has an if statement in order to switch using the modal between
+//creating a new category or editing the category.
+//Axios was imported then used in order to process the data between the front-end and back-end for all function in the Category
+//and Task functions
 let createCategory = async(e) => {
     e.preventDefault();
 
@@ -30,22 +35,24 @@ let createCategory = async(e) => {
             user_id
         });
     }
-
+//after creating the category, we get the results in order to update the page without refreshing.
     await getCategories();
 
     var myModal = document.getElementById('exampleModal');
     var modal = bootstrap.Modal.getInstance(myModal) // Returns a Bootstrap modal instance
     modal.hide();
-
+//resetting the values in the fields in order to use it again without having the previous information display.
     title.value = "";
     id.value = 0;
 }
 
+//Deleting a category function
 let deleteCategory = async(id) => {
     await axios.delete(`/todo/category/${id}`);
     await getCategories();
 }
-
+//Drawing the actual divs in the front-end using a for-loop in order to generate the needed elements and adding the classes needed
+//and displaying the category information with the task information inside it.
 let getCategories = async() => {
     let result = (await axios.get('/todo/category')).data.items;
 
@@ -59,6 +66,8 @@ let getCategories = async() => {
         let category_div = createCard();
 
         category_div.title.innerText = category.title;
+        category_div.div.style.marginLeft = "50px";
+        category_div.div.style.marginTop = "40px";
 
         let category_delete = document.createElement("button");
         category_delete.classList.add("btn");
@@ -97,15 +106,17 @@ let getCategories = async() => {
         category_div.body.appendChild(category_div.title);
 
         category.tasks.forEach(task => {
-            let taskCard = createCard();
+            let taskCard = createCard("14rem");
 
-            taskCard.title.innerText = task.title;
+            taskCard.title.innerText = "Task : " + task.title;
+            taskCard.div.style.marginBottom = "30px";
+            taskCard.div.style.marginTop = "15px";
 
             let desc = document.createElement("p");
-            desc.innerText = task.description;
+            desc.innerText = "Description: " + task.description;
 
             let dueDate = document.createElement("p");
-            dueDate.innerText = task.duedate;
+            dueDate.innerText ="Due-Date: " + task.duedate;
 
             let task_delete = document.createElement("button");
             task_delete.classList.add("btn");
@@ -147,11 +158,13 @@ let getCategories = async() => {
         category_div.body.appendChild(category_edit);
         category_div.body.appendChild(category_delete);
         category_div.div.appendChild(category_div.body);
-
+        
         div.appendChild(category_div.div);
     });
 }
-
+//Function to create a Task by filling the variables with the information inserted and then using Axios again to process the data
+//and call the functions in the back-end to create a task.
+//also has an if-statement in order to use the modal for both creating a task and editing the needed task.
 let createTask = async(e) => {
     e.preventDefault();
 
@@ -179,13 +192,13 @@ let createTask = async(e) => {
             category_id: category_id.value
         });
     }
-
+//used in order to keep showing new tasks without refreshing 
     await getCategories();
 
     var myModal = document.getElementById('taskModal');
     var modal = bootstrap.Modal.getInstance(myModal) // Returns a Bootstrap modal instance
     modal.hide();
-
+//resetting the values in the create task form input fields.
     taskTitle.value = "";
     description.value = "";
     duedate.value = "";

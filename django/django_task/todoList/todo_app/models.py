@@ -5,7 +5,7 @@ from django.db.models.deletion import CASCADE
 from django.db.models.fields import DateTimeField
 from login_app.models import users
 
-
+## A class in order to do validations but doesnt currently work.
 class UserManager(models.Model):
     def form_validator(self, post_data):
         errors = {}
@@ -13,7 +13,7 @@ class UserManager(models.Model):
             errors["categoryTitle"] = "Category title is required!"
         return errors
 
-
+## Category Model that includes all the details needed for a category with a function in order to return the data in JSON form
 class Category(models.Model):
     title = models.CharField(max_length=255)
     created_by = models.ForeignKey(
@@ -36,7 +36,7 @@ class Category(models.Model):
             "tasks": task_result
         }
 
-
+## Task Model that includes all the details needed for a task with a function in order to return the data in JSON form
 class Task(models.Model):
     title = models.CharField(max_length=255)
     created_by = models.ForeignKey(

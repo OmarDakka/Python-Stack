@@ -7,7 +7,8 @@ import json
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-
+#This defintion will render the Homepage that we land on upon successfull login.
+#The defintion also puts the user's name and id in context in able to be used in the html to be able to show them.
 def index(request):
     user = request.session['first_name'] + " " + request.session['last_name']
     user_id = request.session['id']
@@ -18,6 +19,8 @@ def index(request):
     return render(request, "index.html", context)
 
 
+#First class for the APIs of the category model, includes all the functions of the requests: post, get, put and delete.
+#Each function return a JsonResponse data to be able to use and view in the front-end side
 @method_decorator(csrf_exempt, name='dispatch')
 class category_api(View):
     def post(self, request):
@@ -53,6 +56,8 @@ class category_api(View):
         delete_category(id)
         return JsonResponse({}, status=204)
 
+#Second Task that has all the Task model APIs that also include requests that are post, get, put and delete.
+#The functions also return a JSON response in order to use the data properly and easily.
 @method_decorator(csrf_exempt, name='dispatch')
 class task_api(View):
     def post(self, request):
