@@ -1,6 +1,7 @@
 from login_app.models import users
 from todo_app.models import Category
 
+##Added the CRUD methods for the Category class in order to get results, create new category, edit category and delete category
 def get_all_categories():
     results = Category.objects.all()
     return results

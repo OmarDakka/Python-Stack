@@ -1,7 +1,7 @@
 from login_app.models import users
 from todo_app.models import Category, Task
 
-
+##Added the CRUD methods for the Task class in order to get results, create new task, edit task and delete task
 def get_all_tasks():
     results = Task.objects.all()
     return results

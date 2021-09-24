@@ -3,6 +3,7 @@ import re
 from datetime import date,datetime
 import bcrypt
 
+## UserManager class for validations upon entering information in the registeration and login page
 class UserManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
@@ -21,6 +22,7 @@ class UserManager(models.Manager):
         
         return errors
     
+    ##Login validations
     def login_validator(self,postData):
         errors = {}
         user= get_user(email = postData["email"])
@@ -33,6 +35,7 @@ class UserManager(models.Manager):
                 errors["wrong"] = "Password is incorrect"
             return errors    
 
+## User class with the fields that need to be filled.
 class users(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -43,6 +46,7 @@ class users(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+## functions to create the user and a function to get a specific user
 
 def create_users(first_name, last_name, email, Password,Birthday):
     user = users.objects.create(first_name=first_name, last_name=last_name, email=email, Password=Password, Birthday = Birthday)
